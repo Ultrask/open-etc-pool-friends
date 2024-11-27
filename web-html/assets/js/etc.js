@@ -2,12 +2,12 @@
 //Project: Responsive Pool Template
 //Should Be Included In All Pages. It Controls Data And Charts
 
-var WebURL = "https://example.org/";
-var API = "https://example.org/api/";
+var WebURL = " https://zether.org/";
+var API = "https://zthscan.com/api-docs";
 var stratumAddress = "stratum+tcp://example.org";
-var infoLink = "https://etcblockexplorer.com/block/";
-var txLink = "https://etcblockexplorer.com/tx/";
-var defaultPool = 'etc';
+var infoLink = "https://https://zthscan.com/";
+var txLink = "https://https://zthscan.com/";
+var defaultPool = 'zth';
 var currentPool = defaultPool;
 
 // Check browser compatibility
@@ -222,7 +222,7 @@ function loadSettingsData() {
 		$("#payoutSheme").text("PROP");
 		$("#poolFee").text(fee + " %");
 		$("#payInterval").text(pay);
-		$("#minPayment").text(hold + " ETC");
+		$("#minPayment").text(hold + " ZTH");
 	})
 		.fail(function () {
 			$.notify(
@@ -255,7 +255,7 @@ function loadStatsTicker() {
 			$("#payoutShemeTicker").text("PROP");
 			$("#poolFeeTicker").text(fee + " %");
 			$("#payIntervalTicker").text(pay);
-			$("#minPaymentTicker").text(hold + " ETC");
+			$("#minPaymentTicker").text(hold + " ZTH");
 			$("#poolHashrateTicker").text(_formatter(poolhash, 3, "H/s"));
 			$("#networkHashrateTicker").text(_formatter(nethash, 3, "H/s"));
 			$("#networkDifficultyTicker").text(_formatter(difficulty, 3, "H/s"));
@@ -402,8 +402,8 @@ function loadStatsPrice() {
 		coins = 2.500;
 		price = (data.market_data.current_price.usd).toFixed(2);
 		blockRewardUSD = (coins * price).toFixed(2);
-		$("#etcToUSD").html("$ " + data.market_data.current_price.usd.toFixed(2));
-		$("#etcToBTC").html(data.market_data.current_price.btc.toFixed(8));
+		$("#zthToUSD").html("$ " + data.market_data.current_price.usd.toFixed(2));
+		$("#zthToBTC").html(data.market_data.current_price.btc.toFixed(8));
 		$("#priceHigh").html("$ " + data.market_data.high_24h.usd.toFixed(2));
 		$("#priceHighBTC").html(data.market_data.high_24h.btc.toFixed(8));
 		$("#priceLow").html("$ " + data.market_data.low_24h.usd.toFixed(2));
@@ -413,7 +413,7 @@ function loadStatsPrice() {
 		$("#marketCap").html(data.market_data.market_cap_rank);
 		$("#genesisDate").html(data.genesis_date);
 		$("#blockToUSD").html(blockRewardUSD + " $");
-		$("#lastBlockReward").html(coins + " ETC");
+		$("#lastBlockReward").html(coins + " ZTH");
 	});
 }
 
@@ -472,7 +472,7 @@ function loadBlocksPage() {
 				} else {
 					blockList += "<td>" + status + "</td>";
 				}
-				blockList += "<td class='text-white'>" + reward + " ETC</td>";
+				blockList += "<td class='text-white'>" + reward + " ZTH</td>";
 				blockList += "</tr>";
 			});
 		} else {
@@ -530,7 +530,7 @@ function loadImmaturePage() {
 					immaList += "<td class='text-white'><a href='" + infoLink + value.hash + "' target='_blank'>" + value.hash.substring(0, 8) + " &hellip; " + value.hash.substring(value.hash.length - 8) + "</a></td>";
 					immaList += "<td class='text-white'>" + _formatter(value.difficulty, 5, "H/s") + "</td>";
 					immaList += "<td><span class='" + effortClass + "'>" + effort + "%</span></td>";
-					immaList += "<td class='text-white'>" + reward + " ETC</td>";
+					immaList += "<td class='text-white'>" + reward + " ZTH</td>";
 					immaList += "<td><div class='progress-bar progress-bar-striped bg-info progress-bar-animated' role='progressbar' aria-valuenow='" + confclass + "' aria-valuemin='0' aria-valuemax='100' style='width: " + confclass + "%'><span class='text-white'>" + confclass + "% Completed</span></div></td>";
 					immaList += "</tr>";
 				});
@@ -569,7 +569,7 @@ function loadAvgTotalPage() {
 		var coins = (totalCoin / 1000000000000000000).toFixed(4);
 		$("#avgLuckTotal").html(luckListAll);
 		$("#totalBlocks").html(data.matured.length + " Blocks");
-		$("#totalCoins").html(coins + " ETC");
+		$("#totalCoins").html(coins + " ZTH");
 	})
 }
 
@@ -666,8 +666,8 @@ function loadDashboardData(walletAddress) {
 		rshares = data.roundShares / 1000000000;
 		pendsbal = (data.stats.balance / 1000000000).toFixed(8);
 		$("#minerHashrate").text(_formatter(data.currentHashrate, 3, "H/s"));
-		$("#pendingBalance").text(pendsbal + " ETC");
-		$("#lifetimeBalance").text(coins + " ETC");
+		$("#pendingBalance").text(pendsbal + " ZTH");
+		$("#lifetimeBalance").text(coins + " ZTH");
 		$("#minerShares").text(rshares);
 		$("#avgHash").text(_formatter(data.hashrate, 3, "H/s"));
 		$("#blocksFound").text(data.stats.blocksFound);
@@ -715,7 +715,7 @@ function loadDashboardPaymentList(walletAddress) {
 				wpaymentList += "<tr>";
 				wpaymentList += "<td class='text-success'><b>" + wpaymentCount + "</b></td>";
 				wpaymentList += "<td class='text-white'>" + convertedDate + "</td>";
-				wpaymentList += "<td class='text-white'>" + paid + " ETC</td>";
+				wpaymentList += "<td class='text-white'>" + paid + " ZTH</td>";
 				wpaymentList += "<td class='text-white'><a href='" + txLink + wtxid + "' target='_blank'>" + wtxid.substring(0, 5) + " &hellip; " + wtxid.substring(wtxid.length - 5) + "</a></td>";
 				wpaymentList += "</tr>";
 			});
@@ -772,7 +772,7 @@ function loadMinerAddressPage(walletAddress) {
 			var avgpay = ((shareDominance / 100) * creward).toFixed(4);
 			$("#minerPercent").html(hashDominance + " %");
 			$("#minerSharesDominance").html(shareDominance + " %");
-			$("#avgPayout").html(avgpay + " ETC");
+			$("#avgPayout").html(avgpay + " ZTH");
 		});
 }
 
@@ -800,7 +800,7 @@ function loadPaymentsPage() {
 			paymentList += "<td class='text-white'>" + convertedDate + "</td>";
 			paymentList += "<td class='text-white'><a href='" + txLink + txid + "' target='_blank'>" + txid.substring(0, 8) + " &hellip; " + txid.substring(txid.length - 8) + "</a></td>";
 			paymentList += "<td class='text-white'>" + miner + "</td>";
-			paymentList += "<td class='text-white'>" + reward + " ETC</td>";
+			paymentList += "<td class='text-white'>" + reward + " ZTH</td>";
 			paymentList += "</tr>";
 		});
 		$("#paymentList").html(paymentList);

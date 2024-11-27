@@ -1,9 +1,4 @@
-/*
-Template Name: Cyber Pool Responsive Template
-Author: Cyber Harry
-Email: cyberharry@cyberpool.org
-File: app.js
-*/
+
 
 $(function () {
 	"use strict";
